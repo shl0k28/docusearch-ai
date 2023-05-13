@@ -1,13 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { GitbookLoader } from 'langchain/document_loaders/web/gitbook'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-  name: string
-}
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+const loadDocuments = async (documentUrl: string) => {
+	const gitbookLoader = new GitbookLoader(documentUrl, { shouldLoadAllPaths: true })
+	const docs = await gitbookLoader.load()
+	console.log(docs)
 }

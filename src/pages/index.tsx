@@ -6,13 +6,18 @@ const Home: NextPage = () => {
 	
 	const [documentUrl, setDocumentUrl] = useState<string>('')
 
+	
+	const loadDocuments = async () => {
+		
+	}
+
 	return(
 		<Box px={8} py={8}>
 			<Heading>some ai app</Heading>
 			<VStack>
 				<Text>Enter the document URL</Text>
 				<Input value={documentUrl} onChange={({ target }) => setDocumentUrl(target.value)}/>
-				<Button>Create BOT</Button>
+				<Button onClick={loadDocuments}>Create BOT</Button>
 			</VStack>
 		</Box>
 	)
