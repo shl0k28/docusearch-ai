@@ -48,12 +48,13 @@ const Home: NextPage = () => {
 		setReplyIsLoading(false)
 	}
 
+	const logo = `🔍docusearch.ai`
 	return(
-		<Box px={8} py={8}>
-			<Heading>docusearch.ai</Heading>
-			<HStack align={'baseline'} justify={'space-between'} py={8}>
-				<Stack w={'50%'}>
-					<Text>Enter the document URL</Text>
+		<Box px={8} py={8} h={'100vh'} bgColor={'gray.900'} color={'white'}>
+			<Heading>{logo}</Heading>
+			<Stack align={'center'} justify={'center'} py={8}>
+				<Stack>
+					<Text>{`🗐 Enter the document URL`}</Text>
 					<Input value={documentUrl} onChange={({ target }) => setDocumentUrl(target.value)}/>
 					<Button isLoading={documentIsLoading} onClick={loadDocument} disabled={!prompt}>
 						Add Document
@@ -61,16 +62,14 @@ const Home: NextPage = () => {
 					{
 						docResponse && <Text>{docResponse}</Text>
 					}
-				</Stack>
-				<Stack w={'50%'}>
-					<Text>Enter the Prompt</Text>
+					<Text>{`How can I help ❔`}</Text>
 					<Input value={prompt} onChange={({ target }) => setPrompt(target.value)}/>
 					<Button isLoading={replyIsLoading} onClick={() => queryDocument(prompt)} disabled={!prompt}>Query</Button>
 					{
 						reply && <Text>{reply}</Text>
 					}
 				</Stack>
-			</HStack>
+			</Stack>
 		</Box>
 	)
 }
