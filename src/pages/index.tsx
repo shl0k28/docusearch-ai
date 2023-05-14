@@ -1,6 +1,8 @@
 import { NextPage } from 'next'
-import { Box, Button, HStack, Heading, Input, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, HStack, Heading, Icon, Input, Stack, Text, VStack } from '@chakra-ui/react'
 import { useState } from 'react'
+import { BiBookAdd } from 'react-icons/bi'
+import { BsFillPatchQuestionFill } from 'react-icons/bs'
 
 const Home: NextPage = () => {
 	
@@ -56,15 +58,17 @@ const Home: NextPage = () => {
 				<Stack>
 					<Text>{`🗐 Enter the document URL`}</Text>
 					<Input value={documentUrl} onChange={({ target }) => setDocumentUrl(target.value)}/>
-					<Button isLoading={documentIsLoading} onClick={loadDocument} disabled={!prompt}>
+					<Button leftIcon={<Icon as={BiBookAdd}/>} color={'blackAlpha.900'} isLoading={documentIsLoading} onClick={loadDocument} disabled={!prompt}>
 						Add Document
 					</Button>
 					{
 						docResponse && <Text>{docResponse}</Text>
 					}
-					<Text>{`How can I help ❔`}</Text>
+					<Text pt={6}>{`How can I help ❔`}</Text>
 					<Input value={prompt} onChange={({ target }) => setPrompt(target.value)}/>
-					<Button isLoading={replyIsLoading} onClick={() => queryDocument(prompt)} disabled={!prompt}>Query</Button>
+					<Button leftIcon={<Icon as={BsFillPatchQuestionFill} />} color={'blackAlpha.900'} isLoading={replyIsLoading} onClick={() => queryDocument(prompt)} disabled={!prompt}>
+						ASK
+					</Button>
 					{
 						reply && <Text>{reply}</Text>
 					}
