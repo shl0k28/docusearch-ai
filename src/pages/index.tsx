@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { Box, Button, Heading, Input, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, HStack, Heading, Input, Stack, Text, VStack } from '@chakra-ui/react'
 import { useState } from 'react'
 
 const Home: NextPage = () => {
@@ -7,10 +7,11 @@ const Home: NextPage = () => {
 	const [documentUrl, setDocumentUrl] = useState<string>('')
 	const [prompt, setPrompt] = useState('')
 	const [reply, setReply] = useState('')
-	const [isLoading, setIsLoading] = useState(false)
-
+	const [documentIsLoading, setDocumentIsLoading] = useState(false)
+	const [replyIsLoading, setReplyIsLoading] = useState(false)
+	
 	const queryDocument = async (prompt: string) => {
-		setIsLoading(true)
+		setReplyIsLoading(true)
 		const body = JSON.stringify({ prompt })
 		const res = await fetch(`http://localhost:8080/api/query`, {
 			method: 'POST',
@@ -22,21 +23,29 @@ const Home: NextPage = () => {
 		const answer = await res.json()
 		console.log(answer)
 		setReply(answer.response.text)
-		setIsLoading(false)
+		setReplyIsLoading(false)
 	}
 
 	return(
 		<Box px={8} py={8}>
 			<Heading>docusearch.ai</Heading>
-			<VStack>
-				<Text>Enter the document URL</Text>
-				<Input value={documentUrl} onChange={({ target }) => setDocumentUrl(target.value)}/>
-				<Input value={prompt} onChange={({ target }) => setPrompt(target.value)}/>
-				<Button isLoading={isLoading} onClick={() => queryDocument(prompt)} disabled={!prompt}>Query</Button>
-				{
-					reply && <Text>{reply}</Text>
-				}
-			</VStack>
+			<HStack align={'baseline'} justify={'space-between'} py={8}>
+				<Stack w={'50%'}>
+					<Text>Enter the document URL</Text>
+					<Input value={documentUrl} onChange={({ target }) => setDocumentUrl(target.value)}/>
+					<Button isLoading={documentIsLoading} onClick={() => queryDocument(prompt)} disabled={!prompt}>
+						Add Document
+					</Button>
+				</Stack>
+				<Stack w={'50%'}>
+					<Text>Enter the Prompt</Text>
+					<Input value={prompt} onChange={({ target }) => setPrompt(target.value)}/>
+					<Button isLoading={replyIsLoading} onClick={() => queryDocument(prompt)} disabled={!prompt}>Query</Button>
+					{
+						reply && <Text>{reply}</Text>
+					}
+				</Stack>
+			</HStack>
 		</Box>
 	)
 }
