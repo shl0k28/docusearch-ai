@@ -1014,6 +1014,16 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.40.0.tgz#3ba73359e11f5a7bd3e407f70b3528abfae69cec"
   integrity sha512-ElyB54bJIhXQYVKjDSvCkPO1iU1tSAeVQJbllWJq1XQSmmA4dgFk8CbiBGpiOPxleE48vDogxCtmMYku4HSVLA==
 
+"@fontsource/jura@^4.5.13":
+  version "4.5.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/jura/-/jura-4.5.13.tgz#7eb101072b808b00a4837e96ac5e41f9f89f2465"
+  integrity sha512-7y2F0nF4zEi2Cs3K98jo87VWG6sR8tKwysmLGQ4rrSOwQN5FjeH9LcgYqXm8o5OxYTJNtsvtBNSgBzjd2Nigrw==
+
+"@fontsource/manrope@^4.5.13":
+  version "4.5.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/manrope/-/manrope-4.5.13.tgz#c78c3141c506baace10a6ae304f2d56bc2f5217a"
+  integrity sha512-UFN5DMGBp8nFpwhPQXfpSbsEm4OVISqUKQy+rA+pb1zYGoH+OGN1woKEND8VLx+pC7rY3nrPRCJvSuuOaNdW7Q==
+
 "@fortaine/fetch-event-source@^3.0.6":
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/@fortaine/fetch-event-source/-/fetch-event-source-3.0.6.tgz#b8552a2ca2c5202f5699b93a92be0188d422b06e"

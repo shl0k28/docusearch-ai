@@ -52,8 +52,8 @@ const Home: NextPage = () => {
 
 	const logo = `🔍docusearch.ai`
 	return(
-		<Box px={8} py={8} h={'100vh'} bgColor={'gray.900'} color={'white'}>
-			<Heading>{logo}</Heading>
+		<Box px={8} py={8} h={'100vh'} bgColor={'gray.900'} color={'white'} fontFamily={'Manrope'}>
+			<Heading fontFamily={'Jura'}>{logo}</Heading>
 			<Stack align={'center'} justify={'center'} py={8}>
 				<Stack>
 					<Text>{`🗐 Enter the document URL`}</Text>
